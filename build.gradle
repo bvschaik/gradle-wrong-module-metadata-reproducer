@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.example'
+            artifactId = 'test-library'
+            version = '1.0'
+            from components.java
+        }
+        snapshot(MavenPublication) {
+            groupId = 'com.example'
+            artifactId = 'test-library'
+            version = '1.0-SNAPSHOT'
+            from components.java
+        }
+    }
+}

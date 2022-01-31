@@ -13,4 +13,10 @@ jobs:
         java-version: 11
     - uses: gradle/gradle-build-action@v2
       with:
-        arguments: help --info
+        arguments: generateMetadataFileForReleasePublication generateMetadataFileForSnapshotPublication
+    - name: Show metadata output
+      run: |
+        echo "Release metadata:"
+        head build/publications/release/module.json
+        echo "Snapshot metadata:"
+        head build/publications/snapshot/module.json
